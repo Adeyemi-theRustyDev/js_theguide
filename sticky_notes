@@ -1,0 +1,13 @@
+Javascipt the Definitive guide
+~> Language Features
+~ You can define your own methods for arrays (since they are technically objects) Syntax would be like:
+let my_arr = []; arr.to_str  = function() { // function body goes here }
+
+
+~> The language environment [Node.js || Bun || Browser]
+#~> Node.js:
+~ .editor is used to signal the node env to createe an editor environmen in the current repl
+
+
+~> Questions ?
+~ Map ? (Chapter 1, Pg 12 | Example 1.4 [Character Frequency Histograms])
