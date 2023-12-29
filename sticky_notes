@@ -1,13 +1,30 @@
-Javascipt the Definitive guide
+!~> Javascipt the Definitive guide
+
 ~> Language Features
-~ You can define your own methods for arrays (since they are technically objects) Syntax would be like:
-let my_arr = []; arr.to_str  = function() { // function body goes here }
+
+  ~ You can define your own methods for arrays (since they are technically objects) Syntax would be like:
+    let my_arr = []; arr.to_str  = function() { // function body goes here }
+  ~ Null Coalescing operator is in Javascript `??`
+  ~ Also the Elvis operator (though, to this I see no use since it returns undefined anyways)
+  ~ Javascript ignores line-breaks for the most part (even in statements lacking the semi-colon).
+    Javascript treats some line-breaks as semi-colons and it does this using the following rules:
+    - If the next line can't be treated as a continuation of the previous line, it adds a `;`
+    - If the previous code can't be parse without the addition of a `;`
+    - The prevous is false in the case of the following keywords: yield, return, throw and break as
+    their line-breaks are considered as semi-colons by the JS language
+  ~ The defensive semi-colon is a semi-colon placed at the beginning of a line that could be interpreted
+    as the continuation of the previous line by the Javascript interpreter.
+  ~ In the javascript commenting system, you can not nest multi-linr comments.
+  ~ Although the javascript reserverd keywords can't generally be used as identifiers, they can be used as property names in objects
 
 
 ~> The language environment [Node.js || Bun || Browser]
+
 #~> Node.js:
-~ .editor is used to signal the node env to createe an editor environmen in the current repl
+
+  ~ .editor is used to signal the node env to createe an editor environmen in the current repl
 
 
 ~> Questions ?
-~ Map ? (Chapter 1, Pg 12 | Example 1.4 [Character Frequency Histograms])
+
+  ~ Map ? (Chapter 1, Pg 12 | Example 1.4 [Character Frequency Histograms])
