@@ -47,7 +47,7 @@
   E.g let x = "adeyemi"; x.slice(-3) //=> 'emi'
   ~ string.indexOf('a', 4) //=> Returns first occurence of a in string starting from index 4. Position argument may be skipped
   and it just searches the entire string for the first occurence of the "string pattern" supplied.
-  ~ In ES6 some boolean searching mthods have been added. These are:
+  ~ In ES6 some boolean searching methods have been added. These are:
     - string.startsWith("dis")
     - string.endsWith("dat")
     - string.includes("maybe")
@@ -66,19 +66,19 @@
     - string.search(pattern) // Returns the index of the first occurence that satisifies the pattern.
     - string.match(pattern) // Returns an array of matches 
     - string.replace(pattern, replacement) // Replaces the pattern found with the replacement string
-    - string.split(pattern) // Splits on pattern occureence into an array of matches
+    - string.split(pattern) // Splits on pattern occurence into an array of matches
     - string.test(pattern) // Returns a boolean value if the test passes or fails
 
     				Booleans: Truth or False (A game of Liar! Liar!)
   ~ Falsy values in javascript are: false, undefined, null, "", 0, -0, NaN
-  ~ The == opertor considers null and undefined to be equal while the === defers otherwise
+  ~ The == operator considers null and undefined to be equal while the === defers otherwise
 
   				Signs && Symbols
   ~ The Symbol, introduced in ES6 was defined as a mechanism for lang-extension. 
   This arose as a result of the need to standardize iteration between object properties.
   Symbols are unique even when called with the same string.
   ~ Symbol() is used to create a new Symbol. It takes in an optional string argument.
-  It should be noted that this Symbol pseudo-constructor doesn't use the new keyword.
+  It should be noted that this Symbol function doesn't use the new keyword as it isn't a constructor.
   ~ Symbol.for() method on the other hand does not create unique symbols if the same string is passed
   as an argument.
   ~ Symbol.keyFor(symbol_name) // returns the string passed to the symbol pseudo-constructor.
@@ -89,7 +89,7 @@
   undefined, infinity, NaN--and even some functions Date(), RegExp() String(), Array(), Symbol(),
   and even some objects--Math and JSON are defined globally.
   This is made possible by the global object, the global object is available to your program either in a node environment
-  as the property global or in the web browser through the property Window.
+  as the property global or in the web browser through the property window.
   ~ It should be noted that the browser's window property defines the core global property and also some
   additional globals specific to browsers and client-side Javascript.
   ~ ES2020 defines the `globalThis` property as a general way to refer to the global object in both the Browser
@@ -111,9 +111,10 @@
   ~ Property access or invocation has an higher precedence than any of the arithmetic operators.
 
    					Making a Public Statement
-  ~ Statements are differnt from expressions in the sesnse that expressions return a value, but statements distinctively affact the state of the
-  envionment.
-  ~ The default case in switch statements isn;t compulsory and infact doesn't nedd to be the last statement in the switch expression.
+  ~ Statements are different from expressions in the sesnse that expressions return a value,
+but statements distinctively affect the state of the envionment.
+  ~ The default case in switch statements isn't compulsory and infact doesn't need to be the last statement
+in the switch expression.
   ~ The for loop declares the initialize, test, increment  expressions in-between the parentheses and the statement in it's body.
   ~ Any of this parameters may be omitted, but the semi-colon delimiting this expressions have to be  in place.
   ~ Arrays, strings, sets and Maps are iterable. !!! Objects are not iterable.
@@ -121,29 +122,50 @@
   ~ The iterators of map do not iterate over only the keys or the values, but both keys and values in a destructured form
   like so: for(let [k, v] of hypotheticalMap) { // Do something }
   ~ You can label loops using the syntax `label: loop block`
-  ~ You can then use the jump staement to perform a jump operation on the preferred loop using it's label.
-  ~ E.g mainLoop: (while x > 0)  { if(x % 7 == 0) {continue mainLoop}
+  ~ You can then use the jump statement to perform a jump operation on the preferred loop using it's label.
+  ~ E.g mainLoop: (while x > 0)  { if(x % 7 == 0) {continue mainLoop} }
   ~ The throw statement is like the unwrap() function in rust. It exits with the expression passed as an argument to it.
   ~ When you use a try blocks defines boundaries for a block of expressions whose exceptions are to be handled.
   Though it is the try/catch/finally block, the other 2 are conditional. But when you have a try block yu should have at least one
   of them to follow.
-  The try block defines expressions fro which exceptions or errors we want to handle
+  The try block defines expressions for which exceptions or errors we want to handle
   - The catch block defines how to handle the exceptions
   - The finally block runs at the end regardless of what happened previously. // You can call cleanup funcs herer
   - When a module exports a single value it isused with the default keyword like so: `export default <thing_to_export>`
 
   			
 					Looking at Javascript Objectively
-  - All (akshually, most :) objects in js have a prototype.
-  - objects can be created with the literal syntax, using the Object.create() method, and the new keyword.
-  - Using Object.create() you can pass an obj-literal or null to creat an object.
+  - All (Hack-shually, most :)) objects in js have a prototype.
+  - objects can be created with the literal syntax; using the Object.create() method, and also with the new keyword.
+  - Using Object.create() you can pass an obj-literal or null to create an object where the arg is the prototype for the obj.
   Null creates an object without any prototype. A Null-Prototype Object with 0 properties or methods
   Passing an object literal makes the obj prototype be the Object.prototype object.
   - You can also pass Object.prototype to the Object.create() method.
   - It should be noted that whatever is taken in as an argument of the Object.create() method is the prototype.
   - Javascript finds object properties by looking for the property in its objects "owned property" and if it is not found
-  it check if the object has a prototype adn queries the prototype for the property. This continues like that till the property is found
+  it check if the object has a prototype and queries the prototype for the property. This continues like that till the property is found
   until a null-property is reached
+  - <object_name>.propertyIsEnumerable("property") checks if the property is enumerable and returns a boolean accordingly
+  - "property" in obj // checkks if the object has that property
+  - <object_name>.hasOwnProperty("property") // Checks if the obj has own property matching that supplied as arg
+  - The "in"operator distinguishly can separate property that exists, but are explicitly set to undefined.
+  - Object.keys() does not return properties whose keys are symbols.
+  - Object.assign(target_obj, ...src_objs) // Copies enumerable own-property of src-obj(s) to target object
+  A good use for this will be to copy default properties assigned in  one obj to an newly created obj. But mind you, this
+  has to be done with sense as naively-written code might not do you want.
+  E.g Object.assign(o, defaults); // This will override all the props of o with defaults
+  instead do this:
+  o = Object.assign({}, defaults, o); // Copies default's props into empty object than overrides the props on the new object with o's.
+  or using the spread operator as follows: o = { ...defualts, ...o };
+  - The Object.seal(object_name) // Seals an object & prevents it from being extensible i.e no more props can be added.
+
+            SNA123344 -- Serializing with JASON
+  - Object serialization is the process of converting an object's state to a string from which it can be later be serialized.
+  - JSON.stringify(obj) // Serializes a javascript object (or any datatype for that matter) into JSON
+  - JSON.parse(json_obj) // Converts a json object back into a javascript object
+  - JSON.parse() methods return an ISO-string when it tries to parse a previously serialized Date. 
+  This can be converted into other date formats by susing the various string  methods like `toUTCString()`
+  - Functions, RegExp, the Error Objects, and undefined can't be serialized.
 
 ~> The language environment [Node.js || Bun || Browser]
 
