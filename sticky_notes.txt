@@ -166,6 +166,41 @@ in the switch expression.
   - JSON.parse() methods return an ISO-string when it tries to parse a previously serialized Date. 
   This can be converted into other date formats by susing the various string  methods like `toUTCString()`
   - Functions, RegExp, the Error Objects, and undefined can't be serialized.
+  - ComputedPropertyName() // const resultsInSmthn = () => a.x + a.y;
+  a[resultsInSmthn()] // The property name is computed from the function
+  - Getters and Setters (Accessor Properties and data proeprties)
+  let x = {
+   a: 13,
+   b: 12,
+   prod_power: 0,
+   get add() { return this.a + this.b },
+   set productPower(index) { this.prod_power =  (this.a * this.b)**value; } // Sets the prod_power prop to the expression.
+   };
+   // The getters and setters are used like so:
+   x.sum // Returns a value
+   x.productPower = 2 // Returns 2 && now the prod_power prop changes accordingly
+
+						Hiding things in Arrays
+  - JS Arrays can be sparse i.e they can have indexes with empty spaces(holes) that return undefined when accessed;
+  - Theay are like objects but with numeric properties known as index
+  - A decimal index that as an integral counterpart evaluates to the same thing. // i.e arr[1.00] = arr[1]
+  - String numbers like "1" are also equivalent to their integral counterparts whe used as index
+  - Negative or other non-integral string array accessors are considered array properties and not indexes.
+  - Arrays inherit from the Array prototype, Array.prototype.
+  - Arrays can be created using the array literal syntax [], using the spread operator [...prev_arr], using the 
+  Array.of(2) facory method which creates an array from the values supplies to it,
+  the Array.from(array_like_obj) which creates arrays from array like objects like DOM collections,
+  the Array() constructor which when invoked with a single integral value signifies the length of the array and with anything else
+  as elements of the array.
+  - Due to the Objectish implementation of arrays by the language itself using string property names as index arrays can't throw
+  an index out of bounds error like other languages.
+  - A distionction btwn regular JS objects and arrays is the existence of the length property on arrays.
+  - Using the delete operator on arrays leavs gaps in the array
+  - The splice method() is better used for inserting, replacing and deleting array elements.
+  - The Array.from(array_like, ()=>{//dosomething}) takes an optional function as an argument which can be used to map through
+  the elements of an array_like obj passed and mutate them, just like the array map method does. This approach is better 
+  than first creating the array then mapping through the new array elements to mutate them.
+  -Strings are array-like
 
 ~> The language environment [Node.js || Bun || Browser]
 
