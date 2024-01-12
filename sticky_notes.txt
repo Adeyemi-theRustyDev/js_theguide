@@ -223,6 +223,27 @@ in the switch expression.
   						Making subarrays
   - slice() makes subarray slices of an array and takes a start and end parameters where it has to slice from. the end parameter is always  (end  - 1) and it can also take negative indexes.
   - splice() can insert or remove elements from an array.
+  - 1st argument to splice() is Position to start insertion or deletion (not including that index)
+  - 2nd argument is number of items to be deleted
+  - 3rd (other arguments) are individual items to be added to the array if specified.
+  - It should be noted that splice modifies array in place and return the items deleted or inserted. 
+  - The fill() method sets default values for arrays or slice of arrays.
+  - fill() modifies array in place but still returns that array.
+  - fill(value, start_position, end_position); //The value of indexes from start_position to (not including) end_position is now value.
+  - indexOf(val, start_position?); lastIndexOf(val, start_index); // lastIndexOf() starts searching from the last index. returns -1 if it isn't found
+  - .sort() by defualt performs an alphaetic sort and when used on nums, it only compares the first digits.
+  - To properly use the sort method, you need to pass in a custom sort function as its argument.
+  - The sort() method does an in place sort and returns the dorted array also.
+  - In the func passed to the sort method, if the first arg should appear first your func should return a +ve value, if the second arg should appear first it should return a -ve value and if they are equal it should return 0.
+  - E.g. nums.sort((a, b) => a - b); sorts in ascending order.
+  - reverse() method reverses the order of an array.
+  - The join() method converts all the element of an array to a string and concatenates them together.
+  - The join() takes optional arguments that you can use to delimit the elements of the new string instead of using the comma as in the array.
+  - Using join("") uses no deimiter and hence all the items of the former array are packed together like sardines into the new string.
+  - Using join(" "); uses spaces as their delimiter.
+
+  				How Javascript Functions :)
+  - Functions also go by the the name procedures && subroutines.
 ~> The language environment [Node.js || Bun || Browser]
 
 #~> Node.js:
