@@ -244,6 +244,22 @@ in the switch expression.
 
   				How Javascript Functions :)
   - Functions also go by the the name procedures && subroutines.
+  - Function declarations, function expressionss and arrow functions.
+  - Function declarations are hoisted and the body are declared before the script that calls them.
+  They are automtically assigned variables from their identifiers.
+  - Function expressions are not hoisted as the variables to which they are assigned are not created until the part of the
+  script which they are defiend is reached.
+  - Function are invoked though 5 diff ways:
+  ~ As functions
+  ~ As methods
+  ~ As constructors
+  ~ Indirectly, using the call() or apply() methods
+  ~ Implicitly, via JavaScript language features that do not appear like normal function invocations
+
+  - The elvis operator on functions e.g. f?.(x) is equivalent to:
+  (f !== undefined && f !== null) ? f(x) : undefined
+  - Arrow functions inherit their this proeprty from the environment always.
+
 ~> The language environment [Node.js || Bun || Browser]
 
 #~> Node.js:
